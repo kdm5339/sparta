@@ -14,11 +14,10 @@ musics = soup.select('#body-content > div.newest-list > div > table > tbody > tr
 for music in musics:
     # movie 안에 a 가 있으면,
     a_tag = music.select_one('td.info > a.title.ellipsis').text
-    num_tag = music.select_one('td.number').contents[0]
+    num_tag = music.select_one('td.number').content[0].strip()
     singer_tag = music.select_one(' td.info > a.artist.ellipsis').text
     
     if a_tag is not None:
         # a의 text를 찍어본다.
         print (num_tag.strip() ,a_tag.strip() , singer_tag.strip())
         
-    

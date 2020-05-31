@@ -10,15 +10,13 @@ soup = BeautifulSoup(data.text, 'html.parser')
 
 # select를 이용해서, tr들을 불러오기
 musics = soup.select('#body-content > div.newest-list > div > table > tbody > tr')
+
 # movies (tr들) 의 반복문을 돌리기
 for music in musics:
     # movie 안에 a 가 있으면,
-    a_tag = music.select_one('td.info > a.title.ellipsis').text
-    num_tag = music.select_one('td.number').contents[0]
-    singer_tag = music.select_one(' td.info > a.artist.ellipsis').text
-    
-    if a_tag is not None:
+    title_tag = music.select_one('td.info > a.title.ellipsis').text
+    rank_tag = music.select_one('td.number').contents[0]
+    singer_tag = music.select_one('td.info > a.artist.ellipsis').text
+    if title_tag is not None:
         # a의 text를 찍어본다.
-        print (num_tag.strip() ,a_tag.strip() , singer_tag.strip())
-        
-    
+        print (rank_tag.strip(), title_tag.strip(),singer_tag.strip())
